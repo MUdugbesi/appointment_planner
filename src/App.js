@@ -56,49 +56,51 @@ function App() {
         setResult(result)
       }
     }
-
-    const handleAppointment = () => {
-      setResult([])
-    }
-
-    const handleRemoveClick = (idToRemove) => {
-      if (appointments) {
-        setAppointments((prevAppointments) => prevAppointments.filter((list) => list.id !== idToRemove))
-      }
-      if (contacts) {
-        setContacts((prevContacts) => prevContacts.filter(contact => contact.id !== idToRemove))
-      }
-    }
-
-
-    const router = createBrowserRouter(createRoutesFromElements(
-      <Route path="/" element={<Root />}>
-        <Route
-          index element={<Navigate to={ROUTES.CONTACTS} replace />} />
-        <Route
-          path={ROUTES.CONTACTS}
-          element={<ContactsPage
-            contacts={contacts}
-            onAddContact={addContact}
-            handleRemoveContact={handleRemoveClick} /> /* Add props to ContactsPage */} />
-        <Route
-          path={ROUTES.APPOINTMENTS}
-          element={<AppointmentsPage
-            appointment={appointments}
-            onAddAppointment={addAppointment}
-            contacts={contacts}
-            handleFilterClick={handleFilterClick}
-            onchange={handleSearchChange}
-            handleAppointments={handleAppointment}
-            result={result}
-            handleRemoveClick={handleRemoveClick} /> /* Add props to AppointmentsPage */} />
-      </Route>
-    ));
-
-    return (
-      <RouterProvider
-        router={router} />
-    );
   }
 
-  export default App;
+  const handleAppointment = () => {
+    setResult([])
+  }
+
+  const handleRemoveClick = (idToRemove) => {
+    if (appointments) {
+      setAppointments((prevAppointments) => prevAppointments.filter((list) => list.id !== idToRemove))
+    }
+    if (contacts) {
+      setContacts((prevContacts) => prevContacts.filter(contact => contact.id !== idToRemove))
+    }
+  }
+
+
+  const router = createBrowserRouter(createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+      <Route
+        index element={<Navigate to={ROUTES.CONTACTS} replace />} />
+      <Route
+        path={ROUTES.CONTACTS}
+        element={<ContactsPage
+          contacts={contacts}
+          onAddContact={addContact}
+          handleRemoveContact={handleRemoveClick} /> /* Add props to ContactsPage */} />
+      <Route
+        path={ROUTES.APPOINTMENTS}
+        element={<AppointmentsPage
+          appointment={appointments}
+          onAddAppointment={addAppointment}
+          contacts={contacts}
+          handleFilterClick={handleFilterClick}
+          onchange={handleSearchChange}
+          handleAppointments={handleAppointment}
+          result={result}
+          handleRemoveClick={handleRemoveClick} /> /* Add props to AppointmentsPage */} />
+    </Route>
+  ));
+
+  return (
+    <RouterProvider
+      router={router} />
+  );
+}
+
+
+export default App;

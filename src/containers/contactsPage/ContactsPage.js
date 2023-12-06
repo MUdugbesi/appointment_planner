@@ -86,10 +86,15 @@ export const ContactsPage = ({ contacts, onAddContact, handleRemoveContact }) =>
 
       </section>
       <hr />
-      <section>
-        <h2>Contacts</h2>
-        <TileList tile={contacts} onclick={handleRemoveContact} />
-      </section>
+
+      {
+        contacts.length ?
+          <section>
+            <h2>Contacts</h2>
+            <TileList tile={contacts} onclick={handleRemoveContact} />
+          </section>
+          : ''
+      }
     </div>
   );
 };

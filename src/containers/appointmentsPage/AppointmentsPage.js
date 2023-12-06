@@ -20,7 +20,7 @@ export const AppointmentsPage = ({
   const [name, setName] = useState('Wound Dressing Appointment');
   const [date, setDate] = useState('2023-12-06');
   const [time, setTime] = useState('09:05');
-  const [contact, setContact] = useState('Marvelous')
+  const [contact, setContact] = useState('')
 
   const clearData = () => {
     setName('');

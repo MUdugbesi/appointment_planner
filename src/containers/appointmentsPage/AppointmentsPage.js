@@ -60,7 +60,7 @@ export const AppointmentsPage = ({
       clearData();
     }
   };
-  
+
 
   return (
     <div>
@@ -81,7 +81,8 @@ export const AppointmentsPage = ({
       </section>
 
       <hr />
-
+      {appointment.length ? 
+      <>
       <section>
         <h2>Appointments</h2>
         <TileList
@@ -90,14 +91,20 @@ export const AppointmentsPage = ({
       </section>
 
       <section>
+
         <input
           type="text"
-          onChange={onchange} />
+          onChange={onchange}
+          placeholder="Enter Contact to filter" />
         <input
           type="submit"
           value="filter by contact"
           onClick={handleFilterClick} />
+
+
       </section>
+
+
 
       <section>
         <p></p>
@@ -106,12 +113,17 @@ export const AppointmentsPage = ({
           tile={result}
           value='result' />
       </section>
+    </>
+    : ''}
 
       <section>
         {result.length ? <input
           type="submit"
           value="Hide"
-          onClick={handleAppointments} /> : ''
+          onClick={handleAppointments}
+
+        /> :
+          ''
         }
       </section>
 
